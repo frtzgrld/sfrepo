@@ -33,12 +33,10 @@
         <name>StaticResource</name>
     </types>
     <types>
-        <members>Custom Object API Name</members>
         <members>*</members>
         <name>CustomObject</name>
     </types>
         <types>
-        <members>Custom Object API Name</members>
         <members>*</members>
         <name>StandardObject</name>
     </types>
