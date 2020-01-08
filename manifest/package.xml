@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<<<<<<< HEAD
     <types>
         <members>*</members>
         <name>ApexClass</name>
@@ -41,4 +42,11 @@
         <name>CustomMetadata</name>
     </types>
     <version>47.0</version>
+=======
+	<types>
+		<members>Account</members>
+		<name>CustomObject</name>
+	</types>
+	<version>47.0</version>
+>>>>>>> 6435a2173c7f78d14a2381cb364fa3d986f607a0
 </Package>

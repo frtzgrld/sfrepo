@@ -1,39 +1,40 @@
 @isTest
-
 public class LeadTestDataBuilder_Test {
+
     private Lead leadRec = new Lead();
+    //Display FirstName
+    public LeadTestDataBuilder_Test withFirstName(String fnSuffix){
 
-    public LeadTestDataBuilder_Test withFirstName(String fnSuffix) {
         leadRec.FirstName = 'John' + fnSuffix;
-
         return this;
     }
-
-    public LeadTestDataBuilder_Test withLastName() {
+    //Display LastName
+    public LeadTestDataBuilder_Test withLastName(){
         leadRec.LastName = 'Doe';
         return this;
     }
 
-    public LeadTestDataBuilder_Test withCompany(String coSuffix) {
-        leadRec.Company = 'Inc';
+    //Display Company
+    public LeadTestDataBuilder_Test withCompany(String coSuffix){
+        leadRec.Company = 'Acme' + coSuffix;
         return this;
     }
-
-    public Lead build() {
+    //combine
+    public Lead build(){
         return leadRec;
     }
-    
-    public List<Lead> buildMultiple(Integer noOfLeads) {
+    //create multiple Lead Record
+    public List<Lead> buildMultiple(Integer noOfLeads){
+
          List<Lead> leadList = new List<Lead>();
+         
+        for(integer i = 0; i < noOfLeads; i++){
+           
+                leadList.add(new Lead(FirstName = leadRec.FirstName + i,
+                                        LastName = leadRec.LastName,
+                                        Company = leadRec.Company + i));
+        }
 
-         for(integer i = 0; i < noOfLeads; i++) {
-             leadList.add(new Lead(
-                 FirstName=leadRec.FirstName+i,
-                 LastName=leadRec.LastName,
-                 Company=leadRec.Company+i
-             ));
-         }
-
-         return leadList;
+        return leadList;
     }
- }
+}
