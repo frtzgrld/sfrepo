@@ -1,30 +1,32 @@
 @isTest
 private class LeadTriggerHandler_Test {
-    private static Integer intFlag = 1;
 
-    @TestSetup static void dataSetup(){
-        LeadTriggerHandler_Test.intFlag = 10;
-    }
+    @isTest static void testNewLead(){
+        //SETUP
+     /*   Lead leadRec = new Lead(LastName = 'Test Last name',
+                                Company = 'Acme, Inc.',
+                                Status = 'Open - Not Contacted');*/
 
-    @isTest static void testNewLead() {
+        Lead leadRec = LeadTestDataFactory_Test.createNewSingleLead('', ', Inc.');
+        //build one
+        Lead anotherLead = new LeadTestDataBuilder_Test().withFirstName('').withLastName().withCompany('').build();
+        //build many
+        List<Lead> leadList = new LeadTestDataBuilder_Test().withFirstName('').withLastName() .withCompany('').buildMultiple(10);
 
-        Lead leadRec = LeadTestDataFactory_Test.createSingleLead('', ',Inc.');
-        Lead anotherLead = new LeadTestDataBuilder_Test().withFirstName('')
-                                                            .withLastName()
-                                                            .build();
-        List<Lead> multipleLead = new LeadTestDataBuilder_Test().withFirstName('')
-                                                            .withLastName()
-                                                            .buildMultiple(10);
+        
+        //TESTING
         Test.startTest();
         insert leadRec;
         Test.stopTest();
 
+        //VERIFICATION
         List<Lead> leadRecs = [SELECT Id, LastName
-                                FROM Lead
-                                WHERE (Id = :leadRec.Id)];
+                               FROM Lead
+                               WHERE (Id = :leadRec.Id)];
 
-        for (Lead lr: leadRecs) {
-            System.assertEquals('Doe (NEW)', lr.LastName);
-        }
+        for(Lead lr: leadRecs){
+            System.assertEquals('Doe (NEW)', lr.LastName, 'Last Name is not matched!');
+        }                       
     }
+
 }
