@@ -37,8 +37,8 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Account</members>
-        <name>CustomObject</name>
+        <members>*</members>
+        <name>CustomMetadata</name>
     </types>
     <version>47.0</version>
 </Package>
